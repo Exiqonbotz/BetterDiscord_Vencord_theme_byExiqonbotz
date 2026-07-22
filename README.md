@@ -1,4 +1,4 @@
-# Exiqon ClearVision: Crimson Dominion
+# BetterDiscord_Vencord_theme_byExiqonbotz
 
 A custom **ClearVision v7** variant featuring a crimson color palette, cinematic wallpaper, refined transparency, and subtle UI improvements.
 
