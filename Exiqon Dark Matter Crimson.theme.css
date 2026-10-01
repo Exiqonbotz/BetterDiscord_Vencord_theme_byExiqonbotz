@@ -1,15 +1,15 @@
 /**
  * @name Exiqon Dark Matter Crimson Dominion for BetterDiscord
  * @author Exiqonbotz
- * @version 1.0.0
- * @description Highly customizable theme for BetterDiscord.
+ * @version 1.0.1
+ * @description Exiqon Dark Matter Crimson for Vencord / ClearVision v7.
  * @source https://github.com/ClearVision/ClearVision-v7
  * @website https://github.com/Exiqonbotz
  * @invite dHaSxn3
  */
 /* IMPORT CSS */
 @import url("https://clearvision.github.io/ClearVision-v7/main.css");
-@import url("https://clearvision.github.io/ClearVision-v7/betterdiscord.css");
+@import url("https://clearvision.github.io/ClearVision-v7/vencord.css");
 /* SETTINGS */
 :root {
   /* ========================= */
@@ -36,7 +36,7 @@
   /* ========================= */
 
   --background-shading-percent: 5%;
-  --background-image: url("https://raw.githubusercontent.com/Exiqonbotz/random/refs/heads/main/Exiqon%20Dark%20Matter%20Crimson%20Dominion.jfif");
+--background-image: url("https://raw.githubusercontent.com/Exiqonbotz/random/main/Exiqon Dark Matter Crimson Dominion.jpg");
   --background-position: center;
   --background-size: cover;
   --background-attachment: fixed;
@@ -44,9 +44,9 @@
   /* Dunkler & cineastischer */
 /* Wallpaper Filter */
 --background-filter:
-    brightness(.90)
-    contrast(1.18)
-    saturate(1.30);
+    brightness(.50)
+    contrast(1.25)
+    saturate(1.15);
 
   /* ========================= */
   /* USER POPOUT */
@@ -148,50 +148,83 @@
 
 /* ADD ADDITIONAL CSS BELOW HERE */
 
+/* ============================================================
+   Discord/Vencord refresh compatibility overrides
+   Uses resilient partial class selectors instead of full hashes.
+   ============================================================ */
 
-/* Kill every divider */
-
-[class*="divider"],
-[class*="separator"],
-hr{
-    display:none !important;
-    border:none !important;
+/* Keep the wallpaper visible even when Discord changes layout wrappers. */
+html,
+body,
+#app-mount,
+[class*="appMount_"],
+[class*="app_"],
+[class*="bg_"] {
+    background: transparent !important;
 }
-/* ===== Remove all panel borders ===== */
 
-.sidebar_c48ade,
-.sidebarRegion__60457,
-.container__2637a,
-.container_c2739c,
-.content_f75fb0,
-.chat_f75fb0,
-.membersWrap_c8ffbb,
-.container__9293f,
-.container__551b0,
-.base_c48ade{
+/* Main ClearVision background fallback. */
+#app-mount::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image: var(--background-image) !important;
+    background-position: var(--background-position) !important;
+    background-size: var(--background-size) !important;
+    background-attachment: var(--background-attachment) !important;
+    filter: var(--background-filter) !important;
+}
 
-    border: none !important;
+#app-mount::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: rgba(0, 0, 0, calc(var(--background-shading-percent) / 100));
+}
+
+/* Remove Discord refresh panel outlines without relying on hash suffixes. */
+:is(
+    [class*="sidebar_"],
+    [class*="sidebarRegion_"],
+    [class*="contentRegion_"],
+    [class*="chat_"],
+    [class*="membersWrap_"],
+    [class*="container_"],
+    [class*="base_"]
+) {
+    border-color: transparent !important;
     box-shadow: none !important;
-
 }
 
-/* obere Leiste */
-
-.header__104ca,
-.title_f75fb0,
-.title_c38106,
-.toolbar__9293f{
-
-    border-bottom: none !important;
-    box-shadow: none !important;
-
-}
-/* Nuclear option */
-
-*::before,
-*::after{
-    border: none !important;
+/* Top bars / headers. */
+:is(
+    [class*="header_"],
+    [class*="title_"],
+    [class*="toolbar_"]
+) {
+    border-bottom-color: transparent !important;
     box-shadow: none !important;
 }
 
+/* Dividers introduced by the refreshed Discord UI. */
+:is(
+    [class*="divider_"],
+    [class*="separator_"]
+) {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
 
+/* Preserve the crimson selection styling after Discord token changes. */
+:root {
+    --background-modifier-selected: rgba(108, 18, 30, .45) !important;
+    --background-modifier-hover: rgba(138, 34, 49, .22) !important;
+    --background-modifier-active: rgba(138, 34, 49, .30) !important;
+    --brand-experiment: var(--main-color) !important;
+    --brand-500: var(--main-color) !important;
+    --brand-560: var(--hover-color) !important;
+}
