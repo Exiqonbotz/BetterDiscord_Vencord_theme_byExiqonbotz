@@ -1,230 +1,240 @@
 /**
- * @name Exiqon Dark Matter Crimson Dominion for BetterDiscord
+ * @name Exiqon Dark Matter Crimson Dominion
  * @author Exiqonbotz
- * @version 1.0.1
- * @description Exiqon Dark Matter Crimson for Vencord / ClearVision v7.
- * @source https://github.com/ClearVision/ClearVision-v7
+ * @version 1.2.1
+ * @description Crimson Wallpaper-Theme mit transparenten Panels (eigenstaendig, ohne ClearVision-Abhaengigkeit).
  * @website https://github.com/Exiqonbotz
  * @invite dHaSxn3
  */
-/* IMPORT CSS */
-@import url("https://clearvision.github.io/ClearVision-v7/main.css");
-@import url("https://clearvision.github.io/ClearVision-v7/vencord.css");
-/* SETTINGS */
-:root {
-  /* ========================= */
-  /* ACCENT COLORS */
-  /* ========================= */
 
+/* ============================================================
+   EINSTELLUNGEN
+   ============================================================ */
+:root {
   --main-color: #6c121e;
   --hover-color: #8a2231;
   --success-color: #43b581;
-  --danger-color: #6c121e;
+  --danger-color: #c0392b;
 
-  /* ========================= */
-  /* STATUS COLORS */
-  /* ========================= */
+  /* Wallpaper */
+  --exq-wallpaper: url("https://raw.githubusercontent.com/Exiqonbotz/random/main/Exiqon%20Dark%20Matter%20Crimson%20Dominion.jpg");
+  --exq-wallpaper-filter: brightness(.50) contrast(1.25) saturate(1.15);
 
-  --online-color: #43b581;
-  --idle-color: #faa61a;
-  --dnd-color: #6c121e;
-  --streaming-color: #4d1730;
-  --offline-color: #6d6d6d;
+  /* Transparenz der Flaechen (0 = voll durchsichtig, 1 = deckend) */
+  --exq-sidebar-alpha: 0.35;   /* Serverliste, Channels */
+  --exq-chat-alpha: 0.25;      /* Chatbereich */
+  --exq-members-alpha: 0.35;   /* Mitgliederliste */
+  --exq-popout-alpha: 0.80;    /* Popouts, Menues */
+  --exq-modal-alpha: 0.85;     /* Einstellungen, Dialoge */
 
-  /* ========================= */
-  /* WALLPAPER */
-  /* ========================= */
-
-  --background-shading-percent: 5%;
---background-image: url("https://raw.githubusercontent.com/Exiqonbotz/random/main/Exiqon Dark Matter Crimson Dominion.jpg");
-  --background-position: center;
-  --background-size: cover;
-  --background-attachment: fixed;
-
-  /* Dunkler & cineastischer */
-/* Wallpaper Filter */
---background-filter:
-    brightness(.50)
-    contrast(1.25)
-    saturate(1.15);
-
-  /* ========================= */
-  /* USER POPOUT */
-  /* ========================= */
-
-  --user-popout-image: var(--background-image);
-  --user-popout-position: center;
-  --user-popout-size: cover;
-  --user-popout-attachment: fixed;
-  --user-popout-filter: var(--background-filter);
-
-  /* ========================= */
-  /* USER MODAL */
-  /* ========================= */
-
-  --user-modal-image: var(--background-image);
-  --user-modal-position: center;
-  --user-modal-size: cover;
-  --user-modal-attachment: fixed;
-  --user-modal-filter: var(--background-filter);
-
-  /* ========================= */
-  /* HOME ICON */
-  /* ========================= */
-
-  --home-icon: url("https://clearvision.github.io/icons/discord.svg");
-  --home-size: cover;
-
-  /* ========================= */
-  /* FONTS */
-  /* ========================= */
-
-  --main-font: "gg sans","Segoe UI",sans-serif;
-  --code-font: Consolas,"gg mono",monospace;
-
-  /* ========================= */
-  /* CHANNELS */
-  /* ========================= */
-
-  --channel-normal: var(--interactive-text-default);
-  --channel-muted: var(--interactive-muted);
-  --channel-hover: #ffffff;
-  --channel-selected: #ffffff;
-  --channel-selected-bg: rgba(108,18,30,.45);
-  --channel-unread: #8a2231;
-  --channel-unread-hover: #b13449;
-
-  /* ========================= */
-  /* ACCESSIBILITY */
-  /* ========================= */
-
-  --focus-color: var(--main-color);
+  --exq-text: #d8d8db;
+  --exq-text-muted: #aeaeb4;
 }
-
-/* THEME SPECIFIC SHADING */
-/* LIGHT THEME */
-:is(.theme-light, .theme-dark .theme-light) {
-  --background-shading: rgba(252, 252, 252, 0.3); /* app background shading color [default: rgba(252, 252, 252, 0.3)] */
-  --card-shading: rgba(252, 252, 252, 0.3); /* cards background shading color [default: rgba(252, 252, 252, 0.3)] */
-  --popout-shading: rgba(252, 252, 252, 0.7); /* popouts background shading color [default: rgba(252, 252, 252, 0.7)] */
-  --modal-shading: rgba(252, 252, 252, 0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --input-shading: rgba(0, 0, 0, 0.3); /* inputs background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --normal-text: #36363c; /* text color [default: #36363c] */
-  --muted-text: #75757e; /* muted text color [default: #75757e] */
-}
-
-/* ASH THEME */
-:is(.theme-dark, .theme-light .theme-dark) {
-  --background-shading: rgba(0, 0, 0, 0.4); /* app background shading color [default: rgba(0, 0, 0, 0.4)] */
-  --card-shading: rgba(0, 0, 0, 0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.2)] */
-  --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --modal-shading: rgba(0, 0, 0, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.4)] */
-  --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #d8d8db; /* text color [default: #d8d8db] */
-  --muted-text: #aeaeb4; /* muted text color [default: #aeaeb4] */
-}
-
-/* DARK THEME */
-:is(.theme-darker, .theme-light .theme-darker) {
-  --background-shading: rgba(0, 0, 0, 0.6); /* app background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --card-shading: rgba(0, 0, 0, 0.3); /* cards background shading color [default: rgba(0, 0, 0, 0.3)] */
-  --popout-shading: rgba(0, 0, 0, 0.7); /* popouts background shading color [default: rgba(0, 0, 0, 0.7)] */
-  --modal-shading: rgba(0, 0, 0, 0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #fbfbfb; /* text color [default: #fbfbfb] */
-  --muted-text: #94949c; /* muted text color [default: #94949c] */
-}
-
-/* ONYX THEME */
-:is(.theme-midnight, .theme-light .theme-midnight) {
-  --background-shading: rgba(0, 0, 0, 0.8); /* app background shading color [default: rgba(0, 0, 0, 0.8)] */
-  --card-shading: rgba(0, 0, 0, 0.4); /* cards background shading color [default: rgba(0, 0, 0, 0.4)] */
-  --popout-shading: rgba(0, 0, 0, 0.8); /* popouts background shading color [default: rgba(0, 0, 0, 0.8)] */
-  --modal-shading: rgba(0, 0, 0, 0.6); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #dcdcde; /* text color [default: #dcdcde] */
-  --muted-text: #86868e; /* muted text color [default: #86868e] */
-}
-
-/* ADD ADDITIONAL CSS BELOW HERE */
 
 /* ============================================================
-   Discord/Vencord refresh compatibility overrides
-   Uses resilient partial class selectors instead of full hashes.
+   WALLPAPER (eigene Ebene, unabhaengig von Discord-Klassen)
    ============================================================ */
-
-/* Keep the wallpaper visible even when Discord changes layout wrappers. */
-html,
-body,
-#app-mount,
-[class*="appMount_"],
-[class*="app_"],
-[class*="bg_"] {
-    background: transparent !important;
+html {
+  background: #000 !important;
 }
 
-/* Main ClearVision background fallback. */
-#app-mount::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-    background-image: var(--background-image) !important;
-    background-position: var(--background-position) !important;
-    background-size: var(--background-size) !important;
-    background-attachment: var(--background-attachment) !important;
-    filter: var(--background-filter) !important;
+body {
+  background: transparent !important;
 }
 
-#app-mount::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: rgba(0, 0, 0, calc(var(--background-shading-percent) / 100));
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--exq-wallpaper);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: var(--exq-wallpaper-filter);
 }
 
-/* Remove Discord refresh panel outlines without relying on hash suffixes. */
-:is(
-    [class*="sidebar_"],
-    [class*="sidebarRegion_"],
-    [class*="contentRegion_"],
-    [class*="chat_"],
-    [class*="membersWrap_"],
-    [class*="container_"],
-    [class*="base_"]
-) {
-    border-color: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Top bars / headers. */
-:is(
-    [class*="header_"],
-    [class*="title_"],
-    [class*="toolbar_"]
-) {
-    border-bottom-color: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Dividers introduced by the refreshed Discord UI. */
-:is(
-    [class*="divider_"],
-    [class*="separator_"]
-) {
-    border-color: transparent !important;
-    box-shadow: none !important;
-}
-
-/* Preserve the crimson selection styling after Discord token changes. */
+/* ============================================================
+   DISCORD-VARIABLEN (alte + neue Tokens, damit alles durchsichtig wird)
+   ============================================================ */
+:is(.theme-dark, .theme-darker, .theme-midnight, .theme-light),
 :root {
-    --background-modifier-selected: rgba(108, 18, 30, .45) !important;
-    --background-modifier-hover: rgba(138, 34, 49, .22) !important;
-    --background-modifier-active: rgba(138, 34, 49, .30) !important;
-    --brand-experiment: var(--main-color) !important;
-    --brand-500: var(--main-color) !important;
-    --brand-560: var(--hover-color) !important;
+  /* Basis-Flaechen */
+  --background-base-lowest: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-base-lower: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-base-low: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-surface-high: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-surface-higher: rgba(0, 0, 0, var(--exq-popout-alpha)) !important;
+  --background-surface-highest: rgba(0, 0, 0, var(--exq-popout-alpha)) !important;
+  --chat-background-default: rgba(0, 0, 0, var(--exq-chat-alpha)) !important;
+  --bg-base-primary: rgba(0, 0, 0, var(--exq-chat-alpha)) !important;
+  --bg-base-secondary: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --bg-base-tertiary: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --bg-surface-overlay: rgba(0, 0, 0, var(--exq-popout-alpha)) !important;
+  --bg-surface-raised: rgba(0, 0, 0, var(--exq-popout-alpha)) !important;
+  --app-frame-background: transparent !important;
+  --app-message-embed-secondary-text: var(--exq-text-muted) !important;
+
+  /* Aeltere Variablen (Fallback) */
+  --background-primary: rgba(0, 0, 0, var(--exq-chat-alpha)) !important;
+  --background-secondary: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-secondary-alt: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-tertiary: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+  --background-floating: rgba(0, 0, 0, var(--exq-popout-alpha)) !important;
+  --channeltextarea-background: rgba(255, 255, 255, 0.06) !important;
+  --deprecated-store-bg: transparent !important;
+
+  /* Akzent Crimson */
+  --brand-500: var(--main-color) !important;
+  --brand-530: var(--main-color) !important;
+  --brand-560: var(--hover-color) !important;
+  --brand-experiment: var(--main-color) !important;
+  --brand-experiment-560: var(--hover-color) !important;
+  --text-brand: #d9566a !important;
+  --background-brand: var(--main-color) !important;
+  --button-filled-brand-background: var(--main-color) !important;
+  --button-filled-brand-background-hover: var(--hover-color) !important;
+
+  /* Auswahl/Hover */
+  --background-modifier-selected: rgba(108, 18, 30, .45) !important;
+  --background-modifier-hover: rgba(138, 34, 49, .22) !important;
+  --background-modifier-active: rgba(138, 34, 49, .30) !important;
+  --interactive-background-selected: rgba(108, 18, 30, .45) !important;
+  --interactive-background-hover: rgba(138, 34, 49, .22) !important;
+  --interactive-background-active: rgba(138, 34, 49, .30) !important;
+
+  /* Text */
+  --text-default: var(--exq-text) !important;
+  --text-muted: var(--exq-text-muted) !important;
+  --text-normal: var(--exq-text) !important;
+  --header-primary: #fff !important;
+  --header-secondary: var(--exq-text-muted) !important;
+  --channels-default: var(--exq-text-muted) !important;
+  --interactive-normal: var(--exq-text-muted) !important;
+  --interactive-hover: #fff !important;
+  --interactive-active: #fff !important;
+
+  /* Rahmen/Linien weg */
+  --border-subtle: transparent !important;
+  --border-normal: rgba(255, 255, 255, 0.08) !important;
+  --border-strong: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ============================================================
+   LAYOUT-WRAPPER TRANSPARENT (gezielt, nur oberste Ebenen)
+   [class^=] trifft nur Klassen, die so BEGINNEN -> weniger Nebenwirkungen
+   ============================================================ */
+#app-mount,
+#app-mount > [class^="appAsidePanelWrapper_"],
+#app-mount [class^="app_"],
+#app-mount [class^="bg_"],
+#app-mount [class^="appMount_"],
+#app-mount [class^="layers_"],
+#app-mount [class^="layer_"]:not([class*="Backdrop"]),
+#app-mount [class^="notDevTools_"],
+#app-mount [class^="content_"],
+#app-mount [class^="base_"],
+#app-mount [class^="titleBar_"],
+#app-mount [class^="guilds_"],
+#app-mount [class^="sidebar_"],
+#app-mount [class^="sidebarList_"],
+#app-mount [class^="sidebarListRounded_"],
+#app-mount [class^="privateChannels_"],
+#app-mount [class^="panels_"],
+#app-mount [class^="chatContent_"],
+#app-mount [class^="chat_"],
+#app-mount [class^="content_"] > [class^="chat_"],
+#app-mount [class^="members_"],
+#app-mount [class^="membersWrap_"],
+#app-mount [class^="container_"][class*="members"],
+#app-mount [class^="searchResultsWrap_"],
+#app-mount [class^="friendsTable"],
+#app-mount [class^="nowPlayingColumn_"],
+#app-mount [class^="peopleColumn_"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Echte Flaechen mit gewuenschter Abdunklung */
+#app-mount [class^="sidebar_"],
+#app-mount [class^="sidebarList_"],
+#app-mount [class^="sidebarListRounded_"],
+#app-mount [class^="guilds_"],
+#app-mount [class^="privateChannels_"],
+#app-mount [class^="panels_"] {
+  background-color: rgba(0, 0, 0, var(--exq-sidebar-alpha)) !important;
+}
+
+#app-mount [class^="chatContent_"],
+#app-mount [class^="chat_"] {
+  background-color: rgba(0, 0, 0, var(--exq-chat-alpha)) !important;
+}
+
+#app-mount [class^="membersWrap_"],
+#app-mount [class^="members_"] {
+  background-color: rgba(0, 0, 0, var(--exq-members-alpha)) !important;
+}
+
+/* Header/Toolbar ohne Rand */
+#app-mount [class*="chat_"] > [class*="subtitleContainer_"],
+#app-mount [class^="title_"],
+#app-mount [class^="toolbar_"] {
+  box-shadow: none !important;
+  border-bottom-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Panel-Umrandungen der neuen UI entfernen */
+#app-mount [class^="sidebar_"],
+#app-mount [class^="chat_"],
+#app-mount [class^="membersWrap_"],
+#app-mount [class^="guilds_"] {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ============================================================
+   POPOUTS, MENUES, MODALS (bleiben lesbar)
+   ============================================================ */
+[class^="menu_"],
+[class^="popout_"],
+[class^="layerContainer_"] [class^="container_"][role="dialog"],
+[class^="quickswitcher_"],
+[class^="tooltip_"] {
+  background-color: rgba(10, 5, 7, var(--exq-popout-alpha)) !important;
+  backdrop-filter: blur(12px);
+}
+
+[class^="modal_"],
+[class^="root_"][role="dialog"],
+[class^="focusLock_"] > [class^="root_"] {
+  background-color: rgba(10, 5, 7, var(--exq-modal-alpha)) !important;
+  backdrop-filter: blur(14px);
+}
+
+/* Eingabefeld */
+[class^="channelTextArea_"],
+[class*="channelTextArea_"] {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Scrollbars im Crimson-Stil */
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color) !important;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* ============================================================
+   STATUSFARBEN
+   ============================================================ */
+:root {
+  --status-online: #43b581;
+  --status-idle: #faa61a;
+  --status-dnd: #6c121e;
+  --status-streaming: #4d1730;
+  --status-offline: #6d6d6d;
 }
